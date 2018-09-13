@@ -1,7 +1,11 @@
 {
   "name": "",
   "version": "",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "pg": "^6.1.0"
   }

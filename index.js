@@ -1,6 +1,18 @@
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
+
 const { Pool, Client } = require('pg')
-// const connectionString = 'postgres://tghowiiwbpkukb:26c4126838e723431a8a6a3dac211499d3eb54da7f47892f71128ba21f5b610a@ec2-107-21-233-72.compute-1.amazonaws.com:5432/d4ut0e04d25haa?ssl=true'
-const connectionString = "postgres://wokerthrhwtzyd:d93e77c58348fbf78cc8ed742efd9c36c999ab4d5d2381e353c3ec888d801ec4@ec2-184-72-219-186.compute-1.amazonaws.com:5432/d8hl88n5fq5dmk?ssl=true"
+const connectionString = 'postgres://tghowiiwbpkukb:26c4126838e723431a8a6a3dac211499d3eb54da7f47892f71128ba21f5b610a@ec2-107-21-233-72.compute-1.amazonaws.com:5432/d4ut0e04d25haa?ssl=true'
+// const connectionString = "postgres://wokerthrhwtzyd:d93e77c58348fbf78cc8ed742efd9c36c999ab4d5d2381e353c3ec888d801ec4@ec2-184-72-219-186.compute-1.amazonaws.com:5432/d8hl88n5fq5dmk?ssl=true"
 
 const client = new Client({
   connectionString: connectionString,
@@ -100,4 +112,3 @@ function deleteContact() {
             throw err;
         });
 }
-
